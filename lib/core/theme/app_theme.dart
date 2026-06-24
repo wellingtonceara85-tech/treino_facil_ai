@@ -1,116 +1,66 @@
-import 'package:flutter/material.dart';
-
-/// Design system do Treino Fácil AI.
-///
-/// Paleta pensada para uso "no calor do treino": alto contraste, cores que
-/// não cansam a vista em ambiente de academia (geralmente claro/branco), e
-/// uma cor de destaque (coral) reservada só para a ação principal de cada
-/// tela, para nunca haver dúvida sobre "qual botão eu aperto agora".
-class AppColors {
-  AppColors._();
-
-  static const Color primary = Color(0xFF0F6E56); // verde-petróleo (ação positiva, progresso)
-  static const Color primaryDark = Color(0xFF085041);
-  static const Color accent = Color(0xFFD85A30); // coral (ação principal / CTA)
-  static const Color background = Color(0xFFFAFAF7);
-  static const Color surface = Color(0xFFFFFFFF);
-  static const Color textPrimary = Color(0xFF2C2C2A);
-  static const Color textSecondary = Color(0xFF5F5E5A);
-  static const Color border = Color(0xFFE3E1D9);
-  static const Color success = Color(0xFF639922);
-  static const Color warning = Color(0xFFBA7517);
-  static const Color danger = Color(0xFFA32D2D);
-}
+﻿import 'package:flutter/material.dart';
 
 class AppSpacing {
   AppSpacing._();
-  static const double xs = 4;
-  static const double sm = 8;
-  static const double md = 16;
-  static const double lg = 24;
-  static const double xl = 32;
+  static const double xs = 4.0;
+  static const double sm = 8.0;
+  static const double md = 16.0;
+  static const double lg = 24.0;
+  static const double xl = 32.0;
+  static const double xxl = 48.0;
+}
+
+class AppColors {
+  AppColors._();
+  static const Color primary = Color(0xFF00E5FF);
+  static const Color accent = Color(0xFF00FF87);
+  static const Color background = Color(0xFF0A0E1A);
+  static const Color surface = Color(0xFF111827);
+  static const Color textPrimary = Color(0xFFFFFFFF);
+  static const Color textSecondary = Color(0xFF8899AA);
+  static const Color border = Color(0xFF1E3A5F);
+  static const Color danger = Color(0xFFFF3D57);
+  static const Color success = Color(0xFF00FF87);
+  static const Color warning = Color(0xFFFFB300);
+  static const Color primaryDark = Color(0xFF00B8D4);
+  static const Color surfaceLight = Color(0xFF1A2235);
 }
 
 class AppTheme {
   AppTheme._();
-
-  static ThemeData get light {
-    final base = ThemeData(
-      useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primary,
-        primary: AppColors.primary,
-        secondary: AppColors.accent,
-        surface: AppColors.surface,
-        brightness: Brightness.light,
+  static ThemeData get darkTheme => ThemeData(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.background,
+    primaryColor: AppColors.primary,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.primary,
+      secondary: AppColors.accent,
+      surface: AppColors.surface,
+      error: AppColors.danger,
+      onPrimary: Colors.black,
+      onSecondary: Colors.black,
+      onSurface: AppColors.textPrimary,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.background,
+      elevation: 0,
+      iconTheme: IconThemeData(color: AppColors.primary),
+      titleTextStyle: TextStyle(color: AppColors.textPrimary, fontSize: 20, fontWeight: FontWeight.w800),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.black,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
       ),
-      scaffoldBackgroundColor: AppColors.background,
-      fontFamily: 'Roboto',
-    );
-
-    return base.copyWith(
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.background,
-        foregroundColor: AppColors.textPrimary,
-        elevation: 0,
-        centerTitle: false,
-        titleTextStyle: TextStyle(
-          color: AppColors.textPrimary,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.accent,
-          foregroundColor: Colors.white,
-          minimumSize: const Size.fromHeight(56),
-          textStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-          elevation: 0,
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          minimumSize: const Size.fromHeight(56),
-          side: const BorderSide(color: AppColors.border, width: 1.4),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-          foregroundColor: AppColors.textPrimary,
-        ),
-      ),
-      cardTheme: CardThemeData(
-        color: AppColors.surface,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppColors.border),
-        ),
-        margin: EdgeInsets.zero,
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: AppColors.surface,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: AppColors.border),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: AppColors.primary, width: 1.6),
-        ),
-      ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.surface,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.textSecondary,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-      ),
-    );
-  }
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.surface,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.textSecondary,
+      type: BottomNavigationBarType.fixed,
+    ),
+    iconTheme: IconThemeData(color: AppColors.primary),
+  );
 }

@@ -30,7 +30,7 @@ class TreinoFacilApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Treino Fácil AI',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
+      theme: AppTheme.darkTheme,
       routerConfig: router,
     );
   }
