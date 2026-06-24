@@ -1,0 +1,38 @@
+name: treino_facil_ai
+description: "Treino Fácil AI — registre treinos, cargas e evolua com sugestões inteligentes."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Backend / dados
+  supabase_flutter: ^2.5.6
+  google_sign_in: ^6.2.1
+
+  # Estado e navegação
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.0
+
+  # UI / gráficos
+  fl_chart: ^0.68.0
+  cupertino_icons: ^1.0.6
+  intl: ^0.19.0
+
+  # Utilidades
+  uuid: ^4.4.0
+  equatable: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
